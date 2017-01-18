@@ -19,9 +19,11 @@ public class FamilyTest {
         testChildren.add(new Child("Roel", LocalDate.of(1992,12,2), Gender.FEMALE));
         testChildren.add(new Child("Roel", LocalDate.of(1997,12,2), Gender.FEMALE));
         testChildren.add(new Child("Roel", LocalDate.of(1999,12,2), Gender.FEMALE));
+        testChildren.add(new Child("Roel", LocalDate.of(2003,2,10), Gender.FEMALE));
         testChildren.add(new Child("Roel", LocalDate.of(1991,12,2), Gender.FEMALE));
         testChildren.add(new Child("Roel", LocalDate.of(2003,12,2), Gender.FEMALE));
-
+        testChildren.add(new Child("Roel", LocalDate.of(2003,2,2), Gender.FEMALE));
+        testChildren.add(new Child("Roel", LocalDate.of(2003,2,10), Gender.FEMALE));
         System.out.println();
         System.out.println("############## BEFORE");
         System.out.println();

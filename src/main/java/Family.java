@@ -88,7 +88,7 @@ public class Family {
                 return Integer.compare(a[0], b[0]);
             }
         });
-        for (int i = 0; i < people.size(); i++) {
+        for (int i = people.size()-1; i >=0 ; i--) {
             output.add(people.get((array[i][1])));
         }
         return output;
