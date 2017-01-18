@@ -1,4 +1,6 @@
+package Person;
 
+import Employment.EmploymentType;
 
 import java.time.LocalDate;
 
@@ -11,7 +13,7 @@ public class Parent  extends Person{
 
 
 
-    public Parent(String name, LocalDate birthdate, boolean gender) {
+    public Parent(String name, LocalDate birthdate, Gender gender) {
         super(name, birthdate,gender);
     }
 

@@ -1,3 +1,4 @@
+package Person;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -8,12 +9,12 @@ import java.time.Period;
 public abstract class Person {
     protected String name;
     protected LocalDate birthdate;
-    protected boolean gender;
+    protected Gender gender;
 
-    public Person(String name, LocalDate birthdate, boolean gender) {
+    public Person(String name, LocalDate birthdate, Gender gender) {
         this.name = name;
         this.birthdate = birthdate;
-        this.gender=gender;
+        this.gender = gender;
     }
 
     public String getName() {

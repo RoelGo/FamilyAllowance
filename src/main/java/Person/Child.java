@@ -1,4 +1,4 @@
-
+package Person;
 
 import java.time.LocalDate;
 
@@ -9,12 +9,12 @@ public class Child extends Person {
 
     private boolean isOrphan;
 
-    public Child(String name, LocalDate birthdate, boolean gender) {
+    public Child(String name, LocalDate birthdate, Gender gender) {
         super(name, birthdate,gender);
         this.isOrphan = false;
     }
 
-    public Child(String name, LocalDate birthdate,boolean gender, boolean isOrphan) {
+    public Child(String name, LocalDate birthdate,Gender gender, boolean isOrphan) {
         super(name, birthdate, gender);
         this.isOrphan = isOrphan;
     }
