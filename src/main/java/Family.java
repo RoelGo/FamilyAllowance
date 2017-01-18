@@ -1,6 +1,8 @@
 
 
+import Employment.SelfEmployed;
 import Person.Child;
+import Person.Gender;
 import Person.Parent;
 
 import java.util.ArrayList;
@@ -9,7 +11,7 @@ import java.util.ArrayList;
  */
 public class Family {
     ArrayList<Child> children = new ArrayList<>();
-    ArrayList<Parent> Parents = new ArrayList<>();
+    ArrayList<Parent> parents = new ArrayList<>();
 
 public double AgeAddition(){
     if (children.size()!=0){
@@ -30,5 +32,59 @@ public double AgeAddition(){
     }
     else return 0.0;
 }
+
+public double parentAddition(){
+    int amountParents = parents.size();
+    int amountChildren = children.size();
+
+    return getFamilyHead().getAddition(amountParents, amountChildren);
+}
+
+public Parent getFamilyHead() {
+// needs 1+ males
+    Parent familyHead = parents.get(0);
+
+    for (Parent parent : parents) {
+        if (parent.getGender() == Gender.MALE) {
+            familyHead = parent;
+        }
+    }
+
+    return familyHead;
+}
+
+public double baseAddition()
+{
+    int amountChildren = children.size();
+    double output = 0;
+
+    for (int childNr = 0; childNr <= children.size(); childNr++) {
+
+        if (children.get(childNr).isOrphan())
+        {
+            output += 353.76;
+        } else if (childNr == 0)
+        {
+            output += 92.09;
+        } else if ( childNr == 1)
+        {
+            output += 170.39;
+        }  else if ( childNr == 2)
+        {
+            output += 254.40;
+        }  else if (getFamilyHead().getEmploymentType().getClass() == SelfEmployed.class)
+        {
+            output += 61.79 ;
+        }
+
+
+
+    }
+
+
+    return output;
+
+}
+
 
 }
