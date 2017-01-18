@@ -2,6 +2,9 @@
 
 import Person.Child;
 import Person.Parent;
+import Person.Person;
+
+import java.util.Arrays;
 
 import java.util.ArrayList;
 /**
@@ -30,7 +33,21 @@ public double AgeAddition(){
     }
     else return 0.0;
 }
-public void SortByAge(){
-
+public static ArrayList<Person> SortByAge(ArrayList<Person> people){
+    int[][] array =new int[people.size()][2];
+    ArrayList<Person> output = new ArrayList<>();
+    for (int i=0;i<people.size();i++) {
+      array[i][0]=  people.get(i).getAgeInDays();
+        array[i][1]= i;
+    }
+    Arrays.sort(array,new java.util.Comparator<int[]>() {
+        public int compare(int[] a, int[] b) {
+            return Integer.compare(a[0], b[0]);
+        }
+    });
+    for (int i=0;i<people.size();i++) {
+        output.add(people.get((array[i][1])));
+    }
+    return output;
 }
 }
