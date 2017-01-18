@@ -1,4 +1,4 @@
-package main.java;
+
 
 import java.time.LocalDate;
 
@@ -11,8 +11,8 @@ public class Parent  extends Person{
 
 
 
-    public Parent(String name, LocalDate birthdate) {
-        super(name, birthdate);
+    public Parent(String name, LocalDate birthdate, boolean gender) {
+        super(name, birthdate,gender);
     }
 
 }

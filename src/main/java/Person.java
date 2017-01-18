@@ -1,4 +1,4 @@
-package main.java;
+
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -10,9 +10,10 @@ public abstract class Person {
     protected LocalDate birthdate;
     protected boolean gender;
 
-    public Person(String name, LocalDate birthdate) {
+    public Person(String name, LocalDate birthdate, boolean gender) {
         this.name = name;
         this.birthdate = birthdate;
+        this.gender=gender;
     }
 
     public String getName() {
@@ -22,8 +23,6 @@ public abstract class Person {
     public LocalDate getBirthdate() {
         return birthdate;
     }
-
-
 
     public int getAge(){
         return Period.between(this.birthdate, LocalDate.now()).getYears();
