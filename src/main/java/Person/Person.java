@@ -40,4 +40,13 @@ public abstract class Person {
         int ageint = (int) age;
         return ageint;
     }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", birthdate=" + birthdate +
+                ", gender=" + gender +
+                '}';
+    }
 }
