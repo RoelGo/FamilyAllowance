@@ -11,6 +11,10 @@ public abstract class Person {
     protected LocalDate birthdate;
     protected Gender gender;
 
+    public Gender getGender() {
+        return gender;
+    }
+
     public Person(String name, LocalDate birthdate, Gender gender) {
         this.name = name;
         this.birthdate = birthdate;
