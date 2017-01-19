@@ -7,7 +7,7 @@ import java.time.temporal.ChronoUnit;
 /**
  * Created by roelg on 16/01/2017.
  */
-public abstract class Person {
+public abstract class Person implements Comparable{
     protected String name;
     protected LocalDate birthdate;
     protected Gender gender;
@@ -48,5 +48,10 @@ public abstract class Person {
                 ", birthdate=" + birthdate +
                 ", gender=" + gender +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return getAgeInDays() - ((Person) o).getAgeInDays();
     }
 }
