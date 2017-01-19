@@ -10,11 +10,29 @@ import java.util.Arrays;
  * Created by roelg on 18/01/2017.
  */
 public class Family {
-    ArrayList<Child> children = new ArrayList<>();
-    ArrayList<Parent> parents = new ArrayList<>();
+    ArrayList<Person> children = new ArrayList<>();
+    ArrayList<Person> parents = new ArrayList<>();
 
+    public double calculateAllowance(){
+        double output = 0;
 
-    public double AgeAddition(){
+        output += baseAddition();
+        output += ageAddition();
+        output += parentAddition();
+
+        return output;
+    }
+
+    public void addParent(Parent parent) {
+        parents.add(parent);
+        parents = sortByAge(parents);
+    }
+    public void addChild(Child child) {
+        children.add(child);
+        children = sortByAge(children);
+    }
+
+    public double ageAddition(){
     if (children.size()!=0){
         double total=0;
         if (children.get(0).getAge()>=6 && children.get(0).getAge()<=11){total+= 16.04;}
@@ -43,11 +61,15 @@ public class Family {
 
     public Parent getFamilyHead() {
 // needs 1+ males
-        Parent familyHead = parents.get(0);
+        Parent familyHead = ((Parent) parents.get(0));
 
-        for (Parent parent : parents) {
+        for (Person parent : parents) {
             if (parent.getGender() == Gender.MALE) {
-                familyHead = parent;
+                familyHead = ((Parent) parent);
+
+            }  else if ( parent.getGender() == Gender.FEMALE)
+            {
+                familyHead = ((Parent) parent);
             }
         }
 
@@ -60,23 +82,24 @@ public class Family {
 
         for (int childNr = 0; childNr <= children.size(); childNr++) {
 
-            if (children.get(childNr).isOrphan()) {
-                output += 353.76;
-            } else if (childNr == 0) {
-                output += 92.09;
-            } else if (childNr == 1) {
-                output += 170.39;
-            } else if (childNr == 2) {
-                output += 254.40;
-            } else if (getFamilyHead().getEmploymentType().getClass() == SelfEmployed.class) {
+            if (getFamilyHead().getEmploymentType().getClass() != SelfEmployed.class) {
+                if (((Child) children.get(childNr)).isOrphan()) {
+                    output += 353.76;
+                } else if (childNr == 0) {
+                    output += 92.09;
+                } else if (childNr == 1) {
+                    output += 170.39;
+                } else if (childNr == 2) {
+                    output += 254.40;
+                }
+            } else  {
                 output += 61.79;
             }
         }
         return output;
-
     }
 
-    public static ArrayList<Person> SortByAge(ArrayList<Person> people) {
+    public static ArrayList<Person> sortByAge(ArrayList<Person> people) {
         int[][] array = new int[people.size()][2];
         ArrayList<Person> output = new ArrayList<>();
         for (int i = 0; i < people.size(); i++) {
